@@ -1,0 +1,72 @@
+<div class="container" *ngIf="orderDetails">
+   <div class="row ">
+    <div class="col-4 mt-4">
+        <div class="card">
+            <h5 class="card-header">Order Id : {{orderId}}</h5>
+             <div class="card-body" style="background-color: whitesmoke;">
+                <div class="container">
+                    <div class="card">
+                       <ul class="list-group">
+                        <li class="list-group-item"><b>Customer Id :</b> {{orderDetails.customerId}}</li>
+                        <li class="list-group-item"><b>Date : </b>{{orderDetails.createdAt | date: "dd/MM/YYYY"}}</li>
+                        <li class="list-group-item"><b>Status : </b>{{orderDetails.status}}</li>
+                        <li class="list-group-item"><b>Customer Name :</b> {{orderDetails.customer.name}}</li>
+                        <li class="list-group-item"><b>Customer Email :</b> {{orderDetails.customer.email}}</li>
+
+                       </ul>
+                    </div>
+                </div>
+             </div>
+        </div>
+
+    </div>
+    <div class="col-8 mt-4" >
+        <div class="card">
+            <h5 class="card-header" style="text-align: center;">Products Items</h5>
+             <div class="card-body">
+                <div class="container">
+                    <div class="table" style="padding-left: 100px;background-color: whitesmoke;" >
+                        <thead style="text-align: center;">
+                            <tr>
+                                <th scope="col">
+                                    Product Id
+                                 </th>
+                                 <th scope="col">
+                                   Product Name
+                                 </th>
+                                 <th scope="col">
+                                     Quantity
+                                 </th>
+                                 <th scope="col">
+                                    Price 
+                                 </th>
+                                 <th scope="col">
+                                     Discount
+                                 </th>
+                                 <th scope="col">
+                                    Amount 
+                                 </th>
+                            </tr>
+                        </thead>
+                        <tbody style="text-align: center;">
+                            <tr *ngFor="let p of orderDetails.productItems">
+                                <td scope="row">{{p.id}}</td>
+                                <td>{{p.product.name}}</td>
+                                <td>{{p.product.quantity}}</td>
+                                <td>{{p.price | number:'.2'}}</td>
+                                <td>{{p.discount | number:'.2'}}</td>
+                                <td>{{p.amount | number:'.2'}}</td>
+                             </tr>
+                        </tbody>
+                        <div class="card-footer" style="width: fit-content;
+                        background-color: bisque;"><strong>Total :</strong> {{orderDetails.total}}</div>
+                    </div>
+                    
+                  
+                </div>
+             </div>
+        </div>
+
+    </div>
+   </div>
+</div>
